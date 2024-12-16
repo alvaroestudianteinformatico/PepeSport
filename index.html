@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PepeSport</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo_azul.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+        </header>
+        <nav>
+            <ul>
+                <li class="active">Home</li>
+                <li><a href="{% url 'quienessomos' %}">Quiénes Somos</a></li>
+                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="home">
+                <div class="logo">
+                    <img src="{% static 'img/logo_azul.png' %}" alt="Blue Logo">
+                </div>
+              </div>
+                <div>
+                    <h2 class="famo">Profesionales con nuestros productos</h2>
+                </div>
+                <div class="famoso">
+                    <img src="{% static 'img/catalina.jpeg' %}" alt="">
+                    <img src="{% static 'img/cristian.jpeg' %}" alt="">
+                    <img src="{% static 'img/jonathan.jpeg' %}" alt="">
+                </div>
+                <div class="famoso">
+                    <img src="{% static 'img/nelson.jpeg' %}" alt="">
+                    <img src="{% static 'img/omar.jpeg' %}" alt="">
+                    <img src="{% static 'img/roberto.jpeg' %}" alt="">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <h5>Nuestras redes sociales</h5>
+            <h6>haga click en ellas</h6>
+            <a class="insta" href="https://www.instagram.com/pepesport.oficial/" target="_blank"><img src="{% static 'img/insta.png' %}">@pepesport.oficial</a>
+            <a class="wasap" href="https://wa.me/+56936681549" target="_blank"><img src="{% static 'img/wasap.png' %}">+56936681549</a>
+            <p>Alvaro Araya y Cesar Clavijo, <br> @Copyrigth Derechos reservados.</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'js/funciones.js' %}"></script>
+</body>
+</html>

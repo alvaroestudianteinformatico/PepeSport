@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PepeSport</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo_azul.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <img src="{% static 'img/logo.png' %}" alt="Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'quienessomos' %}">Quiénes Somos</a></li>
+            <li class="active">Catálogo</li>
+        </ul>
+    </nav>
+    <main>
+        <div class="titulo">
+            <h3>"En PepeSport tenemos la ropa perfecta para que puedas hacer deporte con excelente calidad."</h3>
+            <p>Aquí hay algunos de nuestros productos. Si quieres ver más productos, descarga nuestro catálogo.</p>
+            <a href="{% static 'pdf/Catálogo de productos Pepe Sport 2024.pdf' %}" download>CLICK AQUÍ para descargar PDF</a>
+        </div> 
+        <div class="catalog">
+            {% for product in products %}
+            <div class="product" id="product{{ forloop.counter }}">
+                <a href="#">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <h2>{{ product.name }}</h2>
+                    <p>${{ product.price }}</p>
+                </a>
+                <div class="quantity">
+                    <button class="minus">-</button>
+                    <input type="text" class="quantity-input" value="1" min="1" max="9" maxlength="1">
+                    <button class="plus">+</button>
+                </div>
+                <button class="add-to-cart">Añadir al Carro</button>
+            </div>
+        {% endfor %}
+        </div>
+        <img src="{% static 'img/cart.png' %}" alt="Sticky Image" class="sticky-image" id="stickyImage">
+        <div class="popup" id="popup">
+            <div id="cart-content"></div>
+            <div class="buttons-container">
+                <button class="close-btn" id="closeBtn">Cerrar</button>
+                <button class="next-btn" id="nextBtn">Siguiente</button>
+            </div>
+        </div>
+        <div class="confirmation-popup" id="confirmationPopup">
+            <form id="purchaseForm" method="post">
+            </form>
+            <button id="backBtn">Regresar</button>
+            <button id="confirmBtn">Confirmar</button>
+        </div>
+        <div id="errorMessage" class="error-message">Completa el formulario primero</div>
+    </main>
+    <footer>
+        <h5>Nuestras redes sociales</h5>
+        <h6>haga click en ellas</h6>
+        <a class="insta" href="https://www.instagram.com/pepesport.oficial/" target="_blank"><img src="{% static 'img/insta.png' %}">@pepesport.oficial</a>
+        <a class="wasap" href="https://wa.me/+56936681549" target="_blank"><img src="{% static 'img/wasap.png' %}">+56936681549</a>
+        <p>Alvaro Araya y Cesar Clavijo, <br> @Copyrigth Derechos reservados.</p>
+    </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div class="message" id="message">Producto agregado al carro<br>Revise su carro abajo a la derecha </div>
+</body>
+</html>
